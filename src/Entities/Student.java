@@ -15,22 +15,18 @@ public class Student {
     private String lastName;
     private String matricNumber;
     private char gender;
-    private String nationality;
-    private int mobileNo;
     private String email;
     private Calendar accessStart;
     private Calendar accessEnd;
     private int notiMode;
 
     //constructor
-    public Student (String userName, String firstName, String lastName, String matricNumber, char gender, String nationality, int mobileNo, String email, Calendar accessStart, Calendar accessEnd, int notiMode) {
+    public Student (String userName, String firstName, String lastName, String matricNumber, char gender, String email, Calendar accessStart, Calendar accessEnd, int notiMode) {
         this.userName 			= userName;
         this.firstName 			= firstName;
         this.lastName 			= lastName;
         this.matricNumber		= matricNumber;
         this.gender				= gender;
-        this.nationality		= nationality;
-        this.mobileNo           = mobileNo;
         this.email              = email;
         this.accessStart 		= accessStart;
         this.accessEnd 			= accessEnd;
@@ -77,21 +73,6 @@ public class Student {
         this.gender = gender;
     }
 
-    public String getNationality() {
-        return nationality;
-    }
-
-    public void setNationality(String nationality) {
-        this.nationality = nationality;
-    }
-
-    public int getMobileNo() {
-        return mobileNo;
-    }
-
-    public void setMobileNo(int mobileNo) {
-        this.mobileNo = mobileNo;
-    }
 
     public String getEmail() {
         return email;

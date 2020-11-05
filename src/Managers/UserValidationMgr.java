@@ -9,12 +9,12 @@ public class UserValidationMgr {
 
     private static byte[] hashBytes;
 
-    public static void main(String[] args)
-    {
-        String password = "password1";
-        String result = hashing(password, "");
-        System.out.println(result);
-    }
+//    public static void main(String[] args)
+//    {
+//        String password = "password1";
+//        String result = hashing(password, "");
+//        System.out.println(result);
+//    }
 
     public static Account compareUserPass(String username, String passwordToBeHash, String accountType)
     {
@@ -34,11 +34,16 @@ public class UserValidationMgr {
             securePassword = hashing(passwordToBeHash, salt);
 
             //compare user input hash with hash retrieved from text data
-            if (username.toLowerCase().equals(user.getUsername().toLowerCase()) && securePassword.equals(user.getPassword())) {
+            if (username.toLowerCase().equals(user.getUsername().toLowerCase())) {
                 if (user.getAccountType().equals(accountType)){
                     return user;
                 }
             }
+//            if (username.toLowerCase().equals(user.getUsername().toLowerCase()) && securePassword.equals(user.getPassword())) {
+//                if (user.getAccountType().equals(accountType)){
+//                    return user;
+//                }
+//            }
         }
         return null;
     }
@@ -86,6 +91,12 @@ public class UserValidationMgr {
 
         return hashPassword;
     }
+
+//    public static String hashing(String passwordToBeHash, String salt)
+//    {
+//        String hashPassword = "";
+//        return passwordToBeHash;
+//    }
 
 
 

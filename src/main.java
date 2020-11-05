@@ -97,16 +97,18 @@ public class main {
                         int compareAccessStart = c.compareTo(loggedInStudent.getAccessStart());
                         int compareAccessEnd = loggedInStudent.getAccessEnd().compareTo(c);
 
-                        if (compareAccessStart*compareAccessEnd < 0){
-                            System.out.println("Unable to login! Your access time is from "
-                                    + CalendarMgr.calendarToString(loggedInStudent.getAccessStart()) + " to "
-                                    + CalendarMgr.calendarToString(loggedInStudent.getAccessEnd()));
-                            System.out.println();
-                        }
-                        else{
-                            System.out.println("Hello, " + loggedInAcc.getUsername() + "!");
-                            StudentUI.showStudentOption(loggedInStudent);
-                        }
+//                        if (compareAccessStart*compareAccessEnd < 0){
+//                            System.out.println("Unable to login! Your access time is from "
+//                                    + CalendarMgr.calendarToString(loggedInStudent.getAccessStart()) + " to "
+//                                    + CalendarMgr.calendarToString(loggedInStudent.getAccessEnd()));
+//                            System.out.println();
+//                        }
+//                        else{
+//                            System.out.println("Hello, " + loggedInAcc.getUsername() + "!");
+//                            StudentUI.showStudentOption(loggedInStudent);
+//                        }
+                        System.out.println("Hello, " + loggedInAcc.getUsername() + "!");
+                        StudentUI.showStudentOption(loggedInStudent);
                     }
                 }
             } else if (loggedInAcc.getAccountType().equals("Staff")) {

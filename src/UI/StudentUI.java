@@ -289,8 +289,7 @@ public class StudentUI {
                 // Updating
                 studentList.remove(s);
                 Student newStud = new Student(s.getUserName(), s.getFirstName(), s.getLastName(),
-                        s.getMatricNumber(), s.getGender(), s.getNationality(), s.getMobileNo(),
-                        s.getEmail(), s.getAccessStart(), s.getAccessEnd(), choice);
+                        s.getMatricNumber(), s.getGender(), s.getEmail(), s.getAccessStart(), s.getAccessEnd(), choice);
                 DataListMgr.writeObject(newStud);
 
                 // necessary to prevent re-looping of updated textfile

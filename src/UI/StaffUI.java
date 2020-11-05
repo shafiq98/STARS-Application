@@ -147,8 +147,7 @@ public class StaffUI {
 
         // Adding New Student
         Student newStud = new Student(username, firstName, lastName,
-                matricNumber, gender, nationality,
-                mobileNo, email, accessStart,
+                matricNumber, gender, email, accessStart,
                 accessEnd, 3);
         DataListMgr.writeObject(newStud);
 
@@ -174,8 +173,7 @@ public class StaffUI {
                 // Updating
                 studentList.remove(s);
                 Student newStud = new Student(s.getUserName(), s.getFirstName(), s.getLastName(),
-                        s.getMatricNumber(), s.getGender(), s.getNationality(),s.getMobileNo(),
-                        s.getEmail(), newAccessStart, newAccessEnd, s.getNotiMode());
+                        s.getMatricNumber(), s.getGender(), s.getEmail(), newAccessStart, newAccessEnd, s.getNotiMode());
                 DataListMgr.writeObject(newStud);
 
                 return;

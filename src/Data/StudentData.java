@@ -41,7 +41,7 @@ public class StudentData {
             Calendar accessEnd = CalendarMgr.stringToCalendar(star.nextToken().trim()); // nine token
             int notiMode = Integer.parseInt((star.nextToken().trim())); //tenth token
 
-            Student std = new Student(userName, firstName, lastName, matricNum, gender, nationality, mobileNo, email, accessStart, accessEnd, notiMode);
+            Student std = new Student(userName, firstName, lastName, matricNum, gender, email, accessStart, accessEnd, notiMode);
 
             // add to Students list
             studentList.add(std);
@@ -65,10 +65,6 @@ public class StudentData {
             st.append(std.getMatricNumber().trim());
             st.append(SEPARATOR);
             st.append(std.getGender());
-            st.append(SEPARATOR);
-            st.append(std.getNationality());
-            st.append(SEPARATOR);
-            st.append(std.getMobileNo());
             st.append(SEPARATOR);
             st.append(std.getEmail());
             st.append(SEPARATOR);
