@@ -31,19 +31,14 @@ public class UserValidationMgr {
             salt = user.getSalt();
 
             //hash user password input with salt
-            securePassword = hashing(passwordToBeHash, salt);
+            securePassword = passwordToBeHash;
 
             //compare user input hash with hash retrieved from text data
-            if (username.toLowerCase().equals(user.getUsername().toLowerCase())) {
+            if (username.toLowerCase().equals(user.getUsername().toLowerCase()) && securePassword.equals(user.getPassword())) {
                 if (user.getAccountType().equals(accountType)){
                     return user;
                 }
             }
-//            if (username.toLowerCase().equals(user.getUsername().toLowerCase()) && securePassword.equals(user.getPassword())) {
-//                if (user.getAccountType().equals(accountType)){
-//                    return user;
-//                }
-//            }
         }
         return null;
     }
