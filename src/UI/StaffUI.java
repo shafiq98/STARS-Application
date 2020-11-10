@@ -122,18 +122,6 @@ public class StaffUI {
         System.out.print("Enter the student's gender (M/F): ");
         char gender = sc.next().charAt(0);
         sc.nextLine();
-        System.out.print("Enter the student's nationality: "); String nationality = sc.nextLine();
-        int mobileNo = 0;
-        while(true){
-            try{
-                System.out.print("Enter the student's Mobile Number: "); mobileNo = sc.nextInt();
-                sc.nextLine();
-                break;
-            } catch (Exception e){
-                sc.nextLine();
-                System.out.println("Invalid phone number!");
-            }
-        }
         System.out.print("Enter the student's Email Address: "); String email = sc.nextLine();
 
         Calendar accessStart = CalendarMgr.getValidDateTime("access start");
@@ -141,7 +129,10 @@ public class StaffUI {
 
         // Adding New Account (Note: Password = Matric Number)
         String salt = UserValidationMgr.generateSalt();
-        String password = UserValidationMgr.hashing(matricNumber,salt);
+//        String password = UserValidationMgr.hashing(matricNumber,salt);
+//        String password = UserValidationMgr.hashing(matricNumber);
+        // set new accounts to have their matric number as password
+        String password = matricNumber;
         Account newAccount = new Account(username, password, "Student", salt);
         DataListMgr.writeObject(newAccount);
 

@@ -1,13 +1,4 @@
 admin1|P@ssw0rd|Staff|f254b1ea-b477-4434-847c-85fd2556b82d
-stud2|password1|Student|ee19239d-1316-4096-ad02-d273f457862e
-stud3|password1|Student|4822448f-b6d2-419f-8b67-87d890a1e289
-stud1|password1|Student|a1f6819d-7c8c-4708-aca2-e2028469f5f0
-stud4|password1|Student|bf891aea-b2e3-43b1-942d-ab1b2f27f6cc
-stud5|password1|Student|66f80ea3-3df0-4561-abd2-7404fca774b6
-stud5|password1|Student|cd942b21-b07e-4474-84ce-b2e2e5c22989
-stud6|password1|Student|1cfd79e3-5fc1-4545-92f3-b68625d95027
-stud7|password1|Student|2239c0ca-6c9a-4307-9b86-bed2347ad90e
-stud8|password1|Student|2e282a4e-60fb-4f71-ba39-ee5529a821f9
-stud9|password1|Student|e9498170-2972-429b-9cd6-3cf0be354612
-stud10|password1|Student|ace238e4-6d46-49ea-af6b-f06e4bf67e72
-stud33|stud33|Student|db1d4c88-7272-4723-960e-a4963675a325
+SHAFIQ002|U1922134K|Student|1090ee0d-3cdb-4588-bbbf-3e0b5b00de40
+SARAN002|U1922222K|Student|cea8e1bf-f9b4-40ca-a07e-368381134b60
+stud33|U1933555K|Student|be826ea7-ce26-4950-942f-916311f64238

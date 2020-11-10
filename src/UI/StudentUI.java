@@ -1,6 +1,7 @@
 package UI;
 
 import java.io.*;
+import java.security.NoSuchAlgorithmException;
 import java.text.*;
 import java.util.*;
 
@@ -24,11 +25,7 @@ public class StudentUI {
     private static Scanner sc = new Scanner(System.in);
     private static Student loggedInStudent;
 
-    /**
-     * Display options user can perform on restaurant food menu.
-     * User can Add new food, new promotion package or remove 
-     * menu item from menu
-     */
+
     public static void showStudentOption(Student s){
 
         loggedInStudent = s;
@@ -229,7 +226,8 @@ public class StudentUI {
         }
     }
 
-    private static void swopIndexNumberUI() throws IOException, ParseException{
+    private static void swopIndexNumberUI() throws IOException, ParseException, NoSuchAlgorithmException
+    {
         System.out.print("\nEnter Peer's Username: "); String peerUsername = sc.nextLine();
         System.out.print("Enter Peer's Password: "); String peerPassword = sc.nextLine();
 

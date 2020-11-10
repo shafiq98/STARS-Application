@@ -34,8 +34,8 @@ public class StudentData {
             String lastName = star.nextToken().trim(); // second token
             String matricNum = star.nextToken().trim(); // third token
             char gender = (star.nextToken().trim()).charAt(0); // fourth token
-            String nationality = star.nextToken().trim(); // fifth token
-            int mobileNo = Integer.parseInt((star.nextToken().trim())); //sixth token
+//            String nationality = star.nextToken().trim(); // fifth token
+//            int mobileNo = Integer.parseInt((star.nextToken().trim())); //sixth token
             String email = star.nextToken().trim(); // seventh token
             Calendar accessStart = CalendarMgr.stringToCalendar(star.nextToken().trim()); // eight token
             Calendar accessEnd = CalendarMgr.stringToCalendar(star.nextToken().trim()); // nine token
@@ -51,7 +51,7 @@ public class StudentData {
 
     // an example of saving
     public static void saveStudents(ArrayList<Student> al) throws IOException {
-        ArrayList<String> alw = new ArrayList<String>();// to store Studetns data
+        ArrayList<String> alw = new ArrayList<String>();// to store Students data
 
         for (int i = 0; i < al.size(); i++) {
             Student std = (Student) al.get(i);
