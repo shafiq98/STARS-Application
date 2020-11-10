@@ -10,13 +10,11 @@ public class Account implements Serializable {
     private String username ;
     private String password ;
     private String accountType ;
-    private String salt;
 
-    public Account(String username, String password, String accountType, String salt)  {
+    public Account(String username, String password, String accountType)  {
         this.username = username ;
         this.password = password ;
-        this.accountType = accountType ;
-        this.salt = salt;
+        this.accountType = accountType;
     }
 
     public String getUsername() {
@@ -31,9 +29,6 @@ public class Account implements Serializable {
         return accountType;
     }
 
-    public String getSalt() {
-        return salt;
-    }
 
     public boolean equals(Object obj) {
         if (obj instanceof Account) {

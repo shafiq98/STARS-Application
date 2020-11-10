@@ -128,12 +128,11 @@ public class StaffUI {
         Calendar accessEnd = CalendarMgr.getValidDateTime("access end");
 
         // Adding New Account (Note: Password = Matric Number)
-        String salt = UserValidationMgr.generateSalt();
 //        String password = UserValidationMgr.hashing(matricNumber,salt);
 //        String password = UserValidationMgr.hashing(matricNumber);
         // set new accounts to have their matric number as password
         String password = matricNumber;
-        Account newAccount = new Account(username, password, "Student", salt);
+        Account newAccount = new Account(username, password, "Student");
         DataListMgr.writeObject(newAccount);
 
         // Adding New Student

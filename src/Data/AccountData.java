@@ -33,9 +33,8 @@ public class AccountData
             String username = star.nextToken().trim(); // first token
             String password = star.nextToken().trim(); // second token
             String accountType = star.nextToken().trim(); // third token
-            String salt = star.nextToken().trim(); // fourth token
             // create Account object from file data
-            Account acc = new Account(username, password, accountType, salt);
+            Account acc = new Account(username, password, accountType);
             // add to Account list
             accountList.add(acc);
         }
@@ -54,9 +53,6 @@ public class AccountData
             st.append(acc.getPassword().trim());
             st.append(SEPARATOR);
             st.append(acc.getAccountType().trim());
-            st.append(SEPARATOR);
-            st.append(acc.getSalt().trim());
-            alw.add(st.toString());
         }
         IO.write("src/Data/accounts.txt", alw);
     }
