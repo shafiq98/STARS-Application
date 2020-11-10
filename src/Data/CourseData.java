@@ -39,7 +39,6 @@ public class CourseData {
             int AU = Integer.parseInt(tokenizer.nextToken().trim());
             String school = tokenizer.nextToken().trim();
             String courseType = tokenizer.nextToken().trim();
-            examDate = CalendarMgr.stringToCalendar(tokenizer.nextToken().trim());
 
             // create Course object from file data
             Course course = new Course(courseCode, courseName, AU, school,courseType, examDate);

@@ -14,7 +14,7 @@ public class UserValidationMgr
 
     public static void main(String[] args)
     {
-        System.out.println(hashing("stud33"));
+        System.out.println(hashing("U1922134K"));
     }
 
     public static Account compareUserPass(String username, String passwordToBeHash, String accountType) throws NoSuchAlgorithmException
@@ -41,13 +41,6 @@ public class UserValidationMgr
             }
         }
         return null;
-    }
-
-    public static String generateSalt() {
-        String salt;
-        // random alphanumeric generator
-        salt = UUID.randomUUID().toString();
-        return salt;
     }
 
     public static String bytes2String(byte[] data)
