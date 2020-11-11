@@ -129,20 +129,20 @@ public class StaffUI {
 
         // Adding New Account (Note: Password = Matric Number)
 //        String password = UserValidationMgr.hashing(matricNumber,salt);
-//        String password = UserValidationMgr.hashing(matricNumber);
+        String password = UserValidationMgr.hashing(matricNumber);
         // set new accounts to have their matric number as password
-        String password = matricNumber;
+//        String password = matricNumber;
         Account newAccount = new Account(username, password, "Student");
         DataListMgr.writeObject(newAccount);
+        System.out.println("New Account successfully made");
 
         // Adding New Student
         Student newStud = new Student(username, firstName, lastName,
                 matricNumber, gender, email, accessStart,
                 accessEnd, 3);
         DataListMgr.writeObject(newStud);
+        System.out.println("New Student Successfully made");
 
-        System.out.println();
-        System.out.println("A New Student Added Successfully!");
         PrintMgr.printStudentList();
     }
 

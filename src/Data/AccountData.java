@@ -53,6 +53,8 @@ public class AccountData
             st.append(acc.getPassword().trim());
             st.append(SEPARATOR);
             st.append(acc.getAccountType().trim());
+
+            alw.add(st.toString());
         }
         IO.write("src/Data/accounts.txt", alw);
     }

@@ -14,7 +14,7 @@ public class UserValidationMgr
 
     public static void main(String[] args)
     {
-        System.out.println(hashing("U1922134K"));
+        System.out.println(hashing("admin1"));
     }
 
     public static Account compareUserPass(String username, String passwordToBeHash, String accountType) throws NoSuchAlgorithmException

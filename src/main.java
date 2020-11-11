@@ -58,6 +58,7 @@ public class main {
                     System.out.println("********Select Domain********");
                     System.out.println("(1) Student");
                     System.out.println("(2) Staff");
+                    System.out.println("(3) Exit");
                     System.out.print("> ");
                     try {
                         choice = Integer.parseInt(sc.nextLine());
@@ -68,6 +69,9 @@ public class main {
                             case 2:
                                 accountType = "Staff";
                                 break domainLoop;
+                            case 3:
+                                System.out.println("Exiting program...");
+                                System.exit(0);
                             default:
                                 System.out.println("Invalid Input! Please re-enter!");
                                 System.out.println();
