@@ -1,4 +1,5 @@
 stud2|Mohamed|Shafiq|U1922134K|M|SHAFIQ002@student.main.ntu.edu.sg|14/08/2020 13:00|15/08/2020 12:59|3
-stud4|Saran|Raj|U1922222K|M|SARAN002@student.main.ntu.edu.sg|01/12/2020 00:00|12/12/2020 00:00|3
+stud4|Saran|Raj|U1922222K|M|SARAN002@student.main.ntu.edu.sg|01/10/2020 00:00|12/12/2020 00:00|3
 stud33|firstName1|lastName1|U1933555K|F|stud33@student.main.ntu.edu.sg|01/01/2020 00:00|31/12/2020 23:59|3
 stud1|Lim|Witeow|U1923412K|M|limwiteow@student.main.ntu.edu.sg|01/11/2020 00:00|29/12/2020 23:59|3
+stud3|Ananya|Ravichandran|U2020360D|F|ananya002@student.main.ntu.edu.sg|08/08/2020 11:00|08/12/2020 15:00|3

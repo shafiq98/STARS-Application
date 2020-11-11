@@ -1,7 +1,8 @@
 USERNAME    PASSWORD
 stud1       password
 stud2       U1922134K
-stud3       U1922222K
+stud3       U2020360D
+stud4       U1922222K
 stud33      stud33
 admin1      admin1
 

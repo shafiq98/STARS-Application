@@ -1,23 +1,18 @@
 package UI;
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.security.NoSuchAlgorithmException;
 import java.text.*;
 import java.util.*;
 
-import Managers.DataListMgr;
-import Managers.PrintMgr;
-import Managers.StudentCourseMgr;
-import Managers.UserValidationMgr;
-import Entities.Account;
-import Entities.Index;
-import Entities.Student;
-import Entities.StudentCourse;
+import Entities.*;
+import Managers.*;
 
 /**
- * The UI displayed to the staff as the admin.
+ * The UI displayed to the student as the user.
  * @version 1.0
- * @since 2017-03-22
+ * @since 2020-11-11
  */
 
 public class StudentUI {
@@ -91,6 +86,22 @@ public class StudentUI {
         ArrayList<StudentCourse> studentCourseList = DataListMgr.getStudentCourses();
         ArrayList<Index> indexList = DataListMgr.getIndexes();
 
+        // Verify that the user can register more courses without overloading
+        int auCount = 0;
+        final int maxAU = 6;
+        for(StudentCourse sc: studentCourseList){
+            if(sc.getUserName().equals(loggedInStudent.getUserName())){
+                auCount += courseAU(sc.getIndexNumber());
+            }
+        }
+        if (auCount >= maxAU)
+        {
+            System.out.println("Current AU\tMaximum AU");
+            System.out.println(auCount + "\t\t\t" + maxAU);
+            return;
+        }
+
+        // User enters the index they wish to register for
         int indexNumber = 0;
         while(true){
             try{
@@ -294,5 +305,36 @@ public class StudentUI {
                 return;
             }
         }
+    }
+
+    private static int courseAU(int indexNumber) throws IOException
+    {
+        // load up all indexes and courses
+        ArrayList <Index> indexArrayList = DataListMgr.getIndexes();
+        ArrayList <Course> courseArrayList = DataListMgr.getCourses();
+
+        // iterate through index list to find the course we want
+        for (Index i : indexArrayList)
+        {
+            if (i.getIndexNumber() == (indexNumber))
+            {
+                // find the course code for that index
+                String courseCode = i.getCourseCode();
+                for (Course c : courseArrayList)
+                {
+                    // return the AU for that course code
+                    if (c.getCourseCode().equals(courseCode))
+                    {
+//                        System.out.println("Index: " + i.getIndexNumber() + "\tCourse Name: " + c.getCourseName());
+//                        System.out.println(c.getAU());
+                        return c.getAU();
+                    }
+                }
+            }
+
+        }
+        System.out.println("Sorry, either the index or the corresponding course have been deleted from their respective files");
+        System.out.println("Contact Admin for support");
+        return 0;
     }
 }

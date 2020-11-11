@@ -73,7 +73,6 @@ public class Student {
         this.gender = gender;
     }
 
-
     public String getEmail() {
         return email;
     }
