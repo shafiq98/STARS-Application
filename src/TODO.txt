@@ -1,7 +1,8 @@
 TODO
 
 Problems :
-1. program deletes all login information once a new student is added
+1. Once a student drops a mod and another student is assigned to it, studentCourses.txt doesnt update the information
+   It just appends everything to the end meaning the next program run will be wrong.
 
 Features that need to be added :
 1. E-mail notification System

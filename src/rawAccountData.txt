@@ -1,5 +1,5 @@
 USERNAME    PASSWORD
-stud1       password
+stud1       U1923412K
 stud2       U1922134K
 stud3       U2020360D
 stud4       U1922222K

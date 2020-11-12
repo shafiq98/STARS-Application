@@ -6,6 +6,7 @@ import java.security.NoSuchAlgorithmException;
 import java.text.*;
 import java.util.*;
 
+import Data.StudentCourseData;
 import Entities.*;
 import Managers.*;
 
@@ -88,7 +89,7 @@ public class StudentUI {
 
         // Verify that the user can register more courses without overloading
         int auCount = 0;
-        final int maxAU = 6;
+        final int maxAU = 21;
         for(StudentCourse sc: studentCourseList){
             if(sc.getUserName().equals(loggedInStudent.getUserName())){
                 auCount += courseAU(sc.getIndexNumber());
@@ -162,6 +163,32 @@ public class StudentUI {
             StudentCourseMgr.removeCourse(loggedInStudent, indexNumber);
 
             //NotificationMgr.sendAlertWaitlist(indexNumber);
+        }
+        // TODO check if theres any waitlist for this mod
+        String userName_on_waitlist = "";
+        ArrayList <StudentCourse> indexArrayList = DataListMgr.getStudentCourses();
+        ArrayList <Student> studentArrayList = DataListMgr.getStudents();
+        for (StudentCourse i : indexArrayList)
+        {
+            if (i.getIndexNumber() == indexNumber && !i.getRegisterStatus().equals("Registered"))
+            {
+                userName_on_waitlist = i.getUserName();
+                break;
+            }
+        }
+        // if username != "", find that student and register him/her
+        if (!userName_on_waitlist.equals(""))
+        {
+            for (Student s :studentArrayList)
+            {
+                if (s.getUserName().equals(userName_on_waitlist))
+                {
+                    StudentCourseMgr.removeCourse(s, indexNumber);
+                    StudentCourseMgr.registerCourse(s, indexNumber);
+                    System.out.println("Successfully registered Student " + s.getFirstName() + " " + s.getLastName() + " for " + indexNumber);
+                    break;
+                }
+            }
         }
     }
 

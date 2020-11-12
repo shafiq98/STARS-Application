@@ -183,8 +183,8 @@ public class PrintMgr {
                         if (c.getCourseCode().equals(sc.getCourseCode())){
                             System.out.print(sc.getCourseCode() + "\t\t ");
                             System.out.print(c.getAU() + "\t ");
-                            System.out.print(c.getCourseType() + "\t\t ");
-                            System.out.print(sc.getIndexNumber() + "\t\t ");
+                            System.out.print(c.getCourseType() + "\t\t\t ");
+                            System.out.print(sc.getIndexNumber() + "\t\t\t ");
                             System.out.print(sc.getRegisterStatus());
                             System.out.println();
 

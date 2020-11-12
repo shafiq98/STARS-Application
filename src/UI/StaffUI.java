@@ -183,11 +183,11 @@ public class StaffUI {
         for(Index index : indexList){
             if (index.getIndexNumber() == indexNumber){
                 System.out.println();
-                System.out.println("Index Number\tVacancy\t\t Waiting List");
+                System.out.println("Index Number\tVacancy\t\tWaiting List");
                 System.out.println("----------------------------------------");
 
-                System.out.print(index.getIndexNumber() + "\t\t");
-                System.out.print(index.getVacancy() + "\t\t ");
+                System.out.print(index.getIndexNumber() + "\t\t\t");
+                System.out.print(index.getVacancy() + "\t\t\t");
                 System.out.print(index.getWaitingList());
                 System.out.println();
 
