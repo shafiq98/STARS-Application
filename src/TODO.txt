@@ -1,8 +1,11 @@
 TODO
 
 Problems :
-1. Once a student drops a mod and another student is assigned to it, studentCourses.txt doesnt update the information
-   It just appends everything to the end meaning the next program run will be wrong.
+1. Once a student drops an index, another student gets registered for it. but he's allowed to register for that index as well, instead of being put on waitlist
+refer to :
+stud1 dropping 10009
+stud3 gets registered to 10009 automatically
+but stud1 can still apply for 10009 and get it immediately, despite having no vacancies
 
 Features that need to be added :
 1. E-mail notification System

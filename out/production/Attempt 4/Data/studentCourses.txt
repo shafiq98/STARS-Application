@@ -4,8 +4,9 @@ stud2|CZ2007|40003|Registered
 stud4|CZ2001|10003|Registered
 stud4|CZ2002|12345|On Waiting List
 stud4|CZ2007|40003|Registered
+stud3|CZ2002|10009|On Waiting List
 stud3|CZ2007|50000|Registered
 stud2|CZ2002|10009|On Waiting List
 stud3|HN9010|90423|Registered
 stud33|CZ2001|10004|Registered
-stud3|CZ2002|10009|Registered
+stud1|CZ2002|10009|Registered
