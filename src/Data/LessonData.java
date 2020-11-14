@@ -12,11 +12,7 @@ public class LessonData {
 
     public static ArrayList <Lesson> lessonList = new ArrayList<Lesson>() ;
 
-    /** Initialise the courses before application starts
-     * @param filename
-     * @throws IOException
-     * @throws ParseException
-     */
+    /* load lessons.txt before program starts */
     @SuppressWarnings({ "rawtypes", "unchecked"})
     public static ArrayList<Lesson> initLessons() throws IOException, ParseException {
         // read String from text file
@@ -25,8 +21,9 @@ public class LessonData {
         if (stringArray.size() == 0){
             return new ArrayList<Lesson>();
         }
+
         for (int i = 0 ; i < stringArray.size() ; i++) {
-            String field = (String) stringArray.get(i);
+            String field = stringArray.get(i);
 
             // get individual 'fields' of the string separated by SEPARATOR
             // pass in the string to the string tokenizer using delimiter "," 
@@ -42,38 +39,30 @@ public class LessonData {
             // create Lesson object from file data
             Lesson lesson = new Lesson(indexNumber, lessonType, lessonDay, lessonTime, lessonVenue);
             // add to Lesson list 
-            lessonList.add(lesson) ;
+            lessonList.add(lesson);
         }
         return lessonList;
     }
 
-    /** Initialise the lessons before application starts
-     * @param filename
-     * @throws IOException
-     * @throws ParseException
-     */
-    /** Save the courses that has been added during the session
-     * @param CourseToUpdate
-     * @throws IOException
-     */
+
     public static void saveLessons(ArrayList<Lesson> LessonToUpdate) throws IOException {
-        ArrayList <String> cl = new ArrayList<String>() ;// to store Courses data
+        ArrayList <String> data = new ArrayList<String>() ;// to store Courses data
 
         for (int i = 0 ; i < LessonToUpdate.size() ; i++) {
-            Lesson lesson = (Lesson) LessonToUpdate.get(i);
-            StringBuilder stringBuild =  new StringBuilder() ;
-            stringBuild.append(lesson.getIndexNumber());
-            stringBuild.append(SEPARATOR);
-            stringBuild.append(lesson.getLessonType());
-            stringBuild.append(SEPARATOR);
-            stringBuild.append(lesson.getLessonDay());
-            stringBuild.append(SEPARATOR);
-            stringBuild.append(lesson.getLessonTime());
-            stringBuild.append(SEPARATOR);
-            stringBuild.append(lesson.getLessonVenue());
+            Lesson lesson = LessonToUpdate.get(i);
+            StringBuilder partial =  new StringBuilder() ;
+            partial.append(lesson.getIndexNumber());
+            partial.append(SEPARATOR);
+            partial.append(lesson.getLessonType());
+            partial.append(SEPARATOR);
+            partial.append(lesson.getLessonDay());
+            partial.append(SEPARATOR);
+            partial.append(lesson.getLessonTime());
+            partial.append(SEPARATOR);
+            partial.append(lesson.getLessonVenue());
 
-            cl.add(stringBuild.toString()) ;
+            data.add(partial.toString()) ;
         }
-        IO.write("src/Data/lessons.txt",cl);
+        IO.write("src/Data/lessons.txt",data);
     }
 }

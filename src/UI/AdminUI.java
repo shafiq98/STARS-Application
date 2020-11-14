@@ -19,9 +19,9 @@ import Entities.Student;
  * @since 2017-03-22
  */
 
-public class StaffUI {
+public class AdminUI {
 
-    private static Scanner sc = new Scanner(System.in);
+    private static final Scanner sc = new Scanner(System.in);
 
     /**
      * Display options user can perform on restaurant food menu.
@@ -35,7 +35,7 @@ public class StaffUI {
 
         StaffWhileLoop:
         while(true){
-            System.out.println("***Welcome to Staff panel!***");
+            System.out.println("***Welcome to the Admin Interface***");
             System.out.println("Please select an action:");
             System.out.println("(1) Edit student access period");
             System.out.println("(2) Add a student");

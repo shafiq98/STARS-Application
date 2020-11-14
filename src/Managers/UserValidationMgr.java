@@ -27,7 +27,7 @@ public class UserValidationMgr
         {
 
             //create user object to iterate
-            Account user = (Account) accountList.get(i);
+            Account user = accountList.get(i);
 
             //hash user password input with salt
             securePassword = hashing(passwordToBeHash);

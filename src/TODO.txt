@@ -1,11 +1,11 @@
 TODO
 
 Problems :
-1. Once a student drops an index, another student gets registered for it. but he's allowed to register for that index as well, instead of being put on waitlist
-refer to :
-stud1 dropping 10009
-stud3 gets registered to 10009 automatically
-but stud1 can still apply for 10009 and get it immediately, despite having no vacancies
+1. Need to insert a function to check conflicts in scheduling
+> Possible solution : Inside StudentCourseMgr, add 2 private methods.
+    First method retrieves the 3 days and 3 (start, end) time pair for any given index
+    Second method iterates through all currently registered courses (registered under student) and compares results between
+    new course and already registered course. Once a boolean flag Conflict is set to true, break out and raise an error.
 
 Features that need to be added :
 1. E-mail notification System

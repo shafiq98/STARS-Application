@@ -1,24 +1,22 @@
 package UI;
 
 import java.io.*;
-import java.lang.reflect.Array;
 import java.security.NoSuchAlgorithmException;
 import java.text.*;
 import java.util.*;
+import java.lang.*;
 
-import Data.StudentCourseData;
 import Entities.*;
 import Managers.*;
 
 /**
  * The UI displayed to the student as the user.
- * @version 1.0
  * @since 2020-11-11
  */
 
 public class StudentUI {
 
-    private static Scanner sc = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
     private static Student loggedInStudent;
 
 
@@ -29,20 +27,20 @@ public class StudentUI {
 
         StudentWhileLoop:
         while (true){
-            System.out.println("***Welcome to Student panel!***");
+            System.out.println("***Welcome to the Student Interface***");
             System.out.println("Please select an action:");
             System.out.println("(1) Register Course");
             System.out.println("(2) Drop Course");
             System.out.println("(3) Check/Print Courses Registered");
             System.out.println("(4) Check Vacancies Available");
             System.out.println("(5) Change Index Number of Course");
-            System.out.println("(6) Swop Index Number with Another Student");
-            System.out.println("(7) Select Notification Mode");
+            System.out.println("(6) Swap Index Number with Another Student");
+            System.out.println("(7) Select Notification Mode"); // need to implement this
             System.out.println("(8) Logout");
 
             System.out.print("> ");
             try {
-                choice = Integer.parseInt(sc.nextLine());
+                choice = Integer.parseInt(scanner.nextLine());
                 switch (choice) {
                     case 1: // Register Course
                         registerCourseUI();
@@ -104,21 +102,27 @@ public class StudentUI {
 
         // User enters the index they wish to register for
         int indexNumber = 0;
-        while(true){
-            try{
-                System.out.print("Enter the Index Number: "); indexNumber = sc.nextInt();
-                sc.nextLine();
+        while(true)
+        {
+            try
+            {
+                System.out.print("Enter the Index Number: ");
+                indexNumber = scanner.nextInt();
+                scanner.nextLine();
                 break;
-            } catch (Exception e){
-                sc.nextLine();
+            } catch (Exception e)
+            {
+                scanner.nextLine();
                 System.out.println("Invalid input! Index Number must be a number!");
             }
         }
 
         // To check if the index number input by the user exists in the database or not
         boolean foundIndexNumber = false;
-        for(Index i: indexList){
-            if(i.getIndexNumber() == indexNumber){
+        for(Index i: indexList)
+        {
+            if(i.getIndexNumber() == indexNumber)
+            {
                 foundIndexNumber = true;
             }
         }
@@ -140,31 +144,35 @@ public class StudentUI {
         PrintMgr.printIndexInfo(indexNumber);
 
         System.out.println();
-        System.out.print("Confirm to Add Course? (Y/N): ");
-        char choice = sc.nextLine().charAt(0);
-        if (choice == 'Y' || choice == 'y'){
+        System.out.print("Please confirm your choice (Y/N): ");
+        char choice = scanner.nextLine().charAt(0);
+        if (Character.toUpperCase(choice) == 'Y')
+        {
             StudentCourseMgr.registerCourse(loggedInStudent, indexNumber);
         }
+//        if (choice == 'Y' || choice == 'y'){
+//            StudentCourseMgr.registerCourse(loggedInStudent, indexNumber);
+//        }
     }
 
     private static void dropCourseUI() throws ParseException, IOException{
         PrintMgr.printRegisteredCourses(loggedInStudent);
 
         System.out.println();
-        System.out.print("Enter the index number to drop: "); int indexNumber = sc.nextInt();
-        sc.nextLine();
+        System.out.print("Enter the index number to drop: "); int indexNumber = scanner.nextInt();
+        scanner.nextLine();
 
         PrintMgr.printIndexInfo(indexNumber);
 
         System.out.println();
-        System.out.print("Confirm to Drop Course? (Y/N): ");
-        char choice = sc.nextLine().charAt(0);
+        System.out.print("Please confirm your choice (Y/N): ");
+        char choice = scanner.nextLine().charAt(0);
         if (choice == 'Y' || choice == 'y'){
             StudentCourseMgr.removeCourse(loggedInStudent, indexNumber);
 
             //NotificationMgr.sendAlertWaitlist(indexNumber);
         }
-        // TODO check if theres any waitlist for this mod
+        // check if theres any waitlist for this mod
         String userName_on_waitlist = "";
         ArrayList <StudentCourse> indexArrayList = DataListMgr.getStudentCourses();
         ArrayList <Student> studentArrayList = DataListMgr.getStudents();
@@ -196,25 +204,34 @@ public class StudentUI {
         ArrayList<Index> indexList = DataListMgr.getIndexes();
 
         int indexNumber = 0;
-        while(true){
-            try{
-                System.out.print("Please enter the index number to check: "); indexNumber = sc.nextInt();
-                sc.nextLine();
+        while(true)
+        {
+            try
+            {
+                System.out.print("Please enter the index number to check: ");
+                indexNumber = scanner.nextInt();
+                scanner.nextLine();
                 break;
-            } catch (Exception e){
-                sc.nextLine();
+            }
+            catch (Exception e)
+            {
+                scanner.nextLine();
                 System.out.println("Invalid input! Index Number must be a number!");
             }
         }
 
         // To check if the index number input by the user exists in the database or not
         boolean foundIndexNumber = false;
-        for(Index i: indexList){
-            if(i.getIndexNumber() == indexNumber){
+        for(Index i: indexList)
+        {
+            if(i.getIndexNumber() == indexNumber)
+            {
                 foundIndexNumber = true;
+                break;
             }
         }
-        if(!foundIndexNumber){
+        if(!foundIndexNumber)
+        {
             System.out.println();
             System.out.println("Index Number you entered is not found!");
             return;
@@ -222,9 +239,10 @@ public class StudentUI {
 
         PrintMgr.printIndexInfo(indexNumber);
 
-        for(Index index : indexList){
-            if (index.getIndexNumber() == indexNumber){
-
+        for(Index index : indexList)
+        {
+            if (index.getIndexNumber() == indexNumber)
+            {
                 System.out.println();
                 System.out.print("Vacancy: " + index.getVacancy());
                 System.out.print("\t\tWaiting List: " + index.getWaitingList());
@@ -236,10 +254,12 @@ public class StudentUI {
     }
 
     private static void changeIndexNumberUI() throws IOException, ParseException{
-        System.out.print("\nEnter Current Index Number: "); int currentIndexNumber = sc.nextInt();
-        sc.nextLine();
-        System.out.print("Enter New Index Number: "); int newIndexNumber = sc.nextInt();
-        sc.nextLine();
+        System.out.print("\nEnter Current Index Number: ");
+        int currentIndexNumber = scanner.nextInt();
+        scanner.nextLine();
+        System.out.print("Enter New Index Number: ");
+        int newIndexNumber = scanner.nextInt();
+        scanner.nextLine();
 
         System.out.println();
         System.out.println("Current Index Information");
@@ -252,9 +272,9 @@ public class StudentUI {
         PrintMgr.printIndexInfo(newIndexNumber);
 
         System.out.println();
-        System.out.print("Confirm to Change Index Number? (Y/N): ");
-        char choice = sc.nextLine().charAt(0);
-        if (choice == 'Y' || choice == 'y'){
+        System.out.print("Please confirm your changes (Y/N): ");
+        char choice = scanner.nextLine().charAt(0);
+        if (choice== 'Y' || choice == 'y'){
             StudentCourseMgr.removeCourse(loggedInStudent, currentIndexNumber);
             StudentCourseMgr.registerCourse(loggedInStudent, newIndexNumber);
 
@@ -266,18 +286,18 @@ public class StudentUI {
 
     private static void swopIndexNumberUI() throws IOException, ParseException, NoSuchAlgorithmException
     {
-        System.out.print("\nEnter Peer's Username: "); String peerUsername = sc.nextLine();
-        System.out.print("Enter Peer's Password: "); String peerPassword = sc.nextLine();
+        System.out.print("\nEnter Peer's Username: "); String peerUsername = scanner.nextLine();
+        System.out.print("Enter Peer's Password: "); String peerPassword = scanner.nextLine();
 
         Account peerAcc = UserValidationMgr.compareUserPass(peerUsername, peerPassword, "Student");
         ArrayList<Student> studList = DataListMgr.getStudents();
         if (!(peerAcc == null)) { // Successfully logged in
             for (Student peer : studList){
                 if (peer.getUserName().equals(peerAcc.getUsername())){
-                    System.out.print("Enter Your Index Number: "); int yourIndexNumber = sc.nextInt();
-                    sc.nextLine();
-                    System.out.print("Enter Peer's Index Number: "); int peerIndexNumber = sc.nextInt();
-                    sc.nextLine();
+                    System.out.print("Enter Your Index Number: "); int yourIndexNumber = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.print("Enter Peer's Index Number: "); int peerIndexNumber = scanner.nextInt();
+                    scanner.nextLine();
 
                     System.out.println();
                     System.out.println("Student #1 (" + loggedInStudent.getMatricNumber() + ")'s Index Information");
@@ -290,8 +310,8 @@ public class StudentUI {
                     PrintMgr.printIndexInfo(peerIndexNumber);
 
                     System.out.println();
-                    System.out.print("Confirm to Change Index Number? (Y/N): ");
-                    char choice = sc.nextLine().charAt(0);
+                    System.out.print("Please confirm your changes (Y/N): ");
+                    char choice = scanner.nextLine().charAt(0);
                     if (choice == 'Y' || choice == 'y'){
                         StudentCourseMgr.removeCourse(loggedInStudent, yourIndexNumber);
                         StudentCourseMgr.registerCourse(loggedInStudent, peerIndexNumber);
@@ -315,8 +335,8 @@ public class StudentUI {
         System.out.println("(1) Send SMS");
         System.out.println("(2) Send Email");
         System.out.println("(3) Send both");
-        int choice = sc.nextInt();
-        sc.nextLine();
+        int choice = scanner.nextInt();
+        scanner.nextLine();
 
         ArrayList<Student> studentList = DataListMgr.getStudents();
         System.out.println("Size: " + studentList.size());

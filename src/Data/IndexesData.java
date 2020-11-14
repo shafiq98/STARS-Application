@@ -12,22 +12,16 @@ public class IndexesData {
 
     public static ArrayList <Index> indexList = new ArrayList<Index>() ;
 
-    /** Initialise the indexess before application starts
-     * @param filename
-     * @throws IOException
-     * @throws ParseException
-     */
+    /* load indexes.txt */
     @SuppressWarnings({ "rawtypes", "unchecked"})
-
-
     public static ArrayList<Index> initIndexes() throws IOException, ParseException {
-
         // read String from text file
+        System.out.println("Reading from text file");
         ArrayList<String> stringArray = (ArrayList) IO.read("src/Data/indexes.txt");
 
         for (int i = 0 ; i < stringArray.size() ; i++) {
 
-            String field = (String) stringArray.get(i);
+            String field = stringArray.get(i);
 
             // get individual 'fields' of the string separated by SEPARATOR
             // pass in the string to the string tokenizer using delimiter ","
@@ -48,18 +42,13 @@ public class IndexesData {
         return indexList ;
     }
 
-    /** Initialise the courses before application starts
-     * @param filename
-     * @throws IOException
-     * @throws ParseException
-     */
     @SuppressWarnings({ "rawtypes", "unchecked"})
     public static void searchVacancy(String CourseCode,int indexNumber)throws IOException
     {
         ArrayList<String> stringArray = (ArrayList) IO.read("src/Data/indexes.txt");
         for (int i = 0 ; i < stringArray.size() ; i++) {
 
-            String field = (String) stringArray.get(i);
+            String field = stringArray.get(i);
 
             // get individual 'fields' of the string separated by SEPARATOR
             // pass in the string to the string tokenizer using delimiter ","
@@ -77,11 +66,7 @@ public class IndexesData {
             }
         }
     }
-    /** Initialise the courses before application starts
-     * @param filename
-     * @throws IOException
-     * @throws ParseException
-     */
+
     @SuppressWarnings({ "rawtypes", "unchecked"})
     public static void showIndex(String CourseCode)throws IOException
     {
@@ -89,7 +74,7 @@ public class IndexesData {
         int t=0;
         for (int i = 0 ; i < stringArray.size() ; i++) {
 
-            String field = (String) stringArray.get(i);
+            String field = stringArray.get(i);
 
             // get individual 'fields' of the string separated by SEPARATOR
             // pass in the string to the string tokenizer using delimiter ","
@@ -109,28 +94,25 @@ public class IndexesData {
 
     }
 
-    /** Save the courses that has been added during the session
-     * @param CourseToUpdate
-     * @throws IOException
-     */
+
     public static void saveIndexes(ArrayList<Index> IndexToUpdate) throws IOException {
-        ArrayList <String> cl = new ArrayList<String>() ;// to store Courses data
+        ArrayList <String> data = new ArrayList<String>() ;// to store Courses data
 
         for (int i = 0 ; i < IndexToUpdate.size() ; i++) {
-            Index index = (Index) IndexToUpdate.get(i);
-            StringBuilder stringBuild =  new StringBuilder() ;
-            stringBuild.append(index.getCourseCode().trim().toUpperCase());
-            stringBuild.append(SEPARATOR);
-            stringBuild.append(index.getIndexNumber());
-            stringBuild.append(SEPARATOR);
-            stringBuild.append(index.getTutorialGroup());
-            stringBuild.append(SEPARATOR);
-            stringBuild.append(index.getVacancy());
-            stringBuild.append(SEPARATOR);
-            stringBuild.append(index.getWaitingList());
+            Index index = IndexToUpdate.get(i);
+            StringBuilder partial =  new StringBuilder() ;
+            partial.append(index.getCourseCode().trim().toUpperCase());
+            partial.append(SEPARATOR);
+            partial.append(index.getIndexNumber());
+            partial.append(SEPARATOR);
+            partial.append(index.getTutorialGroup());
+            partial.append(SEPARATOR);
+            partial.append(index.getVacancy());
+            partial.append(SEPARATOR);
+            partial.append(index.getWaitingList());
 
-            cl.add(stringBuild.toString()) ;
+            data.add(partial.toString()) ;
         }
-        IO.write("src/Data/indexes.txt",cl);
+        IO.write("src/Data/indexes.txt",data);
     }
 }

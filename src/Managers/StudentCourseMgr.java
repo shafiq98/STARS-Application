@@ -4,8 +4,10 @@ import java.io.*;
 import java.text.*;
 import java.util.*;
 
+import Data.LessonData;
 import Data.StudentCourseData;
 import Entities.Index;
+import Entities.Lesson;
 import Entities.Student;
 import Entities.StudentCourse;
 
@@ -17,6 +19,7 @@ public class StudentCourseMgr
      * @throws ParseException
      * @throws IOException
      */
+
     public static void registerCourse(Student s, int indexNumber) throws IOException, ParseException
     {
         ArrayList<Index> indexList = DataListMgr.getIndexes();
@@ -101,4 +104,5 @@ public class StudentCourseMgr
             }
         }
     }
+
 }

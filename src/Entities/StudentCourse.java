@@ -4,14 +4,10 @@ public class StudentCourse {
 
     private String userName;
 
-    /**
-     * The course code unique to each module
-     */
+    /*The course code unique to each module */
     private String courseCode;
 
-    /**
-     * The list of indexes for the course that the student can register to
-     */
+    /* list of indexes for the course that the student can register to*/
     private int indexNumber;
 
     private String registerStatus;

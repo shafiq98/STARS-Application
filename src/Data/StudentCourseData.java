@@ -13,11 +13,7 @@ public class StudentCourseData {
 
     public static ArrayList <StudentCourse> studentCourseList = new ArrayList<StudentCourse>() ;
 
-    /** Initialise the courses before application starts
-     * @param filename
-     * @throws IOException
-     * @throws ParseException
-     */
+    /* load data from studentCourses.txt */
     @SuppressWarnings({ "rawtypes", "unchecked"})
     public static ArrayList<StudentCourse> initStudentCourses() throws IOException, ParseException {
         // read String from text file
@@ -28,7 +24,7 @@ public class StudentCourseData {
         }
         for (int i = 0 ; i < stringArray.size() ; i++) {
 
-            String field = (String) stringArray.get(i);
+            String field = stringArray.get(i);
 
             // get individual 'fields' of the string separated by SEPARATOR
             // pass in the string to the string tokenizer using delimiter ","
@@ -48,26 +44,23 @@ public class StudentCourseData {
         return studentCourseList ;
     }
 
-    /** Save the courses that has been added during the session
-     * @param CourseToUpdate
-     * @throws IOException
-     */
+
     public static void saveStudentCourses(ArrayList<StudentCourse> CourseToUpdate) throws IOException {
-        ArrayList <String> courseList = new ArrayList<String>() ;// to store Courses data
+        ArrayList <String> data = new ArrayList<String>() ;// to store Courses data
 
         for (int i = 0 ; i < CourseToUpdate.size() ; i++) {
-            StudentCourse course = (StudentCourse) CourseToUpdate.get(i);
-            StringBuilder stringBuild =  new StringBuilder() ;
-            stringBuild.append(course.getUserName().trim());
-            stringBuild.append(SEPARATOR);
-            stringBuild.append(course.getCourseCode().trim());
-            stringBuild.append(SEPARATOR);
-            stringBuild.append(course.getIndexNumber());
-            stringBuild.append(SEPARATOR);
-            stringBuild.append(course.getRegisterStatus());
+            StudentCourse course = CourseToUpdate.get(i);
+            StringBuilder partial =  new StringBuilder() ;
+            partial.append(course.getUserName().trim());
+            partial.append(SEPARATOR);
+            partial.append(course.getCourseCode().trim());
+            partial.append(SEPARATOR);
+            partial.append(course.getIndexNumber());
+            partial.append(SEPARATOR);
+            partial.append(course.getRegisterStatus());
 
-            courseList.add(stringBuild.toString()) ;
+            data.add(partial.toString()) ;
         }
-        IO.write("src/Data/studentCourses.txt", courseList);
+        IO.write("src/Data/studentCourses.txt", data);
     }
 }

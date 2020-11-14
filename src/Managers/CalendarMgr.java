@@ -5,7 +5,7 @@ import java.util.*;
 
 public class CalendarMgr {
 
-    static Scanner sc = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
     static SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 
     public static String calendarToString(Calendar cal) {
@@ -38,7 +38,7 @@ public class CalendarMgr {
 
         do{
             System.out.print("Enter " + mode + " (dd/MM/yyyy HH:mm): ");
-            date  = sc.nextLine();
+            date  = scanner.nextLine();
             dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
             try {
                 parsedDate = dateFormat.parse(date);

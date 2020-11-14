@@ -7,9 +7,9 @@ public class Account implements Serializable {
      *
      */
     private static final long serialVersionUID = 1L;
-    private String username ;
-    private String password ;
-    private String accountType ;
+    private final String username ;
+    private final String password ;
+    private final String accountType ;
 
     public Account(String username, String password, String accountType)  {
         this.username = username ;

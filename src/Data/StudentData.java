@@ -12,18 +12,14 @@ public class StudentData {
     public static final String SEPARATOR = "|";
 
     public static ArrayList<Student> studentList = new ArrayList<Student>();
-    /** Initialise the courses before application starts
-     * @param filename
-     * @throws IOException
-     * @throws ParseException
-     */
+    /* load students.txt on application startup */
     @SuppressWarnings({ "rawtypes", "unchecked"})
     public static ArrayList<Student> initStudents() throws IOException, ParseException {
         // read String from text file
         ArrayList<String> stringArray = (ArrayList) IO.read("src/Data/students.txt");
 
         for (int i = 0; i < stringArray.size(); i++) {
-            String st = (String) stringArray.get(i);
+            String st = stringArray.get(i);
 
             // get individual 'fields' of the string separated by SEPARATOR
             // pass in the string to the string tokenizer using delimiter ","
@@ -51,31 +47,31 @@ public class StudentData {
 
     // an example of saving
     public static void saveStudents(ArrayList<Student> al) throws IOException {
-        ArrayList<String> alw = new ArrayList<String>();// to store Students data
+        ArrayList<String> data = new ArrayList<String>();// to store Students data
 
         for (int i = 0; i < al.size(); i++) {
-            Student std = (Student) al.get(i);
-            StringBuilder st = new StringBuilder();
-            st.append(std.getUserName().trim());
-            st.append(SEPARATOR);
-            st.append(std.getFirstName().trim());
-            st.append(SEPARATOR);
-            st.append(std.getLastName().trim());
-            st.append(SEPARATOR);
-            st.append(std.getMatricNumber().trim());
-            st.append(SEPARATOR);
-            st.append(std.getGender());
-            st.append(SEPARATOR);
-            st.append(std.getEmail());
-            st.append(SEPARATOR);
-            st.append(CalendarMgr.calendarToString(std.getAccessStart()));
-            st.append(SEPARATOR);
-            st.append(CalendarMgr.calendarToString(std.getAccessEnd()));
-            st.append(SEPARATOR);
-            st.append(std.getNotiMode());
+            Student std = al.get(i);
+            StringBuilder partial = new StringBuilder();
+            partial.append(std.getUserName().trim());
+            partial.append(SEPARATOR);
+            partial.append(std.getFirstName().trim());
+            partial.append(SEPARATOR);
+            partial.append(std.getLastName().trim());
+            partial.append(SEPARATOR);
+            partial.append(std.getMatricNumber().trim());
+            partial.append(SEPARATOR);
+            partial.append(std.getGender());
+            partial.append(SEPARATOR);
+            partial.append(std.getEmail());
+            partial.append(SEPARATOR);
+            partial.append(CalendarMgr.calendarToString(std.getAccessStart()));
+            partial.append(SEPARATOR);
+            partial.append(CalendarMgr.calendarToString(std.getAccessEnd()));
+            partial.append(SEPARATOR);
+            partial.append(std.getNotiMode());
 
-            alw.add(st.toString());
+            data.add(partial.toString());
         }
-        IO.write("src/Data/students.txt", alw);
+        IO.write("src/Data/students.txt", data);
     }
 }

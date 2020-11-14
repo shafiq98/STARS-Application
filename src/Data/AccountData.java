@@ -13,11 +13,7 @@ public class AccountData
 
     public static ArrayList<Account> accountList = new ArrayList<Account>();
 
-    /** Initialise the courses before application starts
-     * @param filename
-     * @throws IOException
-     * @throws ParseException
-     */
+    /* load accounts.txt before program starts */
     @SuppressWarnings({ "rawtypes", "unchecked"})
     public static ArrayList<Account> initAccounts() throws IOException {
         // read String from text file
@@ -25,14 +21,13 @@ public class AccountData
 
 
         for (int i = 0; i < stringArray.size(); i++) {
-            String st = (String) stringArray.get(i);
-            // get individual 'fields' of the string separated by SEPARATOR
-            // pass in the string to the string tokenizer using delimiter "|"
+            String st = stringArray.get(i);
+            // read in file line by line, and then split up the data by '|' character
             StringTokenizer star = new StringTokenizer(st, SEPARATOR);
 
-            String username = star.nextToken().trim(); // first token
-            String password = star.nextToken().trim(); // second token
-            String accountType = star.nextToken().trim(); // third token
+            String username = star.nextToken().trim(); // first item
+            String password = star.nextToken().trim(); // second item
+            String accountType = star.nextToken().trim(); // third item
             // create Account object from file data
             Account acc = new Account(username, password, accountType);
             // add to Account list
@@ -43,19 +38,19 @@ public class AccountData
 
     // save new entry
     public static void saveAccounts(ArrayList<Account> al) throws IOException {
-        ArrayList <String> alw = new ArrayList<String>() ;
+        ArrayList <String> data = new ArrayList<String>() ;
 
         for (int i = 0; i < al.size(); i++) {
-            Account acc = (Account) al.get(i);
-            StringBuilder st = new StringBuilder();
-            st.append(acc.getUsername().trim());
-            st.append(SEPARATOR);
-            st.append(acc.getPassword().trim());
-            st.append(SEPARATOR);
-            st.append(acc.getAccountType().trim());
+            Account acc = al.get(i);
+            StringBuilder partial = new StringBuilder();
+            partial.append(acc.getUsername().trim());
+            partial.append(SEPARATOR);
+            partial.append(acc.getPassword().trim());
+            partial.append(SEPARATOR);
+            partial.append(acc.getAccountType().trim());
 
-            alw.add(st.toString());
+            data.add(partial.toString());
         }
-        IO.write("src/Data/accounts.txt", alw);
+        IO.write("src/Data/accounts.txt", data);
     }
 }

@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 // import UI
-import UI.StaffUI;
+import UI.AdminUI;
 import UI.StudentUI;
 
 // import Data
@@ -89,7 +89,7 @@ public class main {
 
                 loggedInAcc = UserValidationMgr.compareUserPass(username, password, accountType);
                 if (!(loggedInAcc == null)) {
-                    break mainLoop;
+                    break;
                 }
 
                 System.out.println();
@@ -101,6 +101,7 @@ public class main {
 
             if (loggedInAcc.getAccountType().equals("Student"))
             {
+                // iterate through list of students and get their access time to ensure we can log in
                 ArrayList<Student> studentList = DataListMgr.getStudents();
                 for(Student loggedInStudent: studentList)
                 {
@@ -118,9 +119,6 @@ public class main {
                         // returns +ve if end time is before todays date
                         int compareAccessEnd = loggedInStudent.getAccessEnd().compareTo(c);
 
-//                        System.out.println("compareAccessStart = " + compareAccessStart);
-//                        System.out.println("comparedAccessEnd = " + compareAccessEnd);
-
                         // if one of the terms is negative, means we're outside our access period
                         if (compareAccessStart < 0 || compareAccessEnd < 0){
                             System.out.println("Unable to login! Your access time is from "
@@ -137,7 +135,7 @@ public class main {
             }
             else if (loggedInAcc.getAccountType().equals("Staff"))
             {
-                StaffUI.showStaffOption();
+                AdminUI.showStaffOption();
             }
         } while (true);
     }

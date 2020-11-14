@@ -13,11 +13,7 @@ public class CourseData {
     public static final String SEPARATOR = "|";
 
     public static ArrayList<Course> courseList = new ArrayList<Course>();
-    /** Initialise the courses before application starts
-     * @param filename
-     * @throws IOException
-     * @throws ParseException
-     */
+    /* load courses.txt before program starts */
     @SuppressWarnings({ "rawtypes", "unchecked"})
     public static ArrayList<Course> initCourses() throws IOException, ParseException {
         // read String from text file
@@ -27,7 +23,7 @@ public class CourseData {
 
         for (int i = 0 ; i < stringArray.size() ; i++) {
 
-            String field = (String) stringArray.get(i);
+            String field = stringArray.get(i);
 
             // get individual 'fields' of the string separated by SEPARATOR
             // pass in the string to the string tokenizer using delimiter "," 
@@ -55,26 +51,26 @@ public class CourseData {
      * @throws IOException
      */
     public static void saveCourses(ArrayList<Course> CourseToUpdate) throws IOException {
-        ArrayList <String> courseListRename = new ArrayList<String>() ;// to store Courses data
+        ArrayList <String> data = new ArrayList<String>() ;// to store Courses data
 
         for (int i = 0 ; i < CourseToUpdate.size() ; i++) {
-            Course course = (Course) CourseToUpdate.get(i);
-            StringBuilder stringBuild =  new StringBuilder() ;
-            stringBuild.append(course.getCourseCode().trim().toUpperCase());
-            stringBuild.append(SEPARATOR);
-            stringBuild.append(course.getCourseName().trim());
-            stringBuild.append(SEPARATOR);
-            stringBuild.append(course.getAU());
-            stringBuild.append(SEPARATOR);
-            stringBuild.append(course.getSchool());
-            stringBuild.append(SEPARATOR);
-            stringBuild.append(course.getCourseType());
-            stringBuild.append(SEPARATOR);
-            stringBuild.append(CalendarMgr.calendarToString(course.getExamDate()));
+            Course course = CourseToUpdate.get(i);
+            StringBuilder partial =  new StringBuilder() ;
+            partial.append(course.getCourseCode().trim().toUpperCase());
+            partial.append(SEPARATOR);
+            partial.append(course.getCourseName().trim());
+            partial.append(SEPARATOR);
+            partial.append(course.getAU());
+            partial.append(SEPARATOR);
+            partial.append(course.getSchool());
+            partial.append(SEPARATOR);
+            partial.append(course.getCourseType());
+            partial.append(SEPARATOR);
+            partial.append(CalendarMgr.calendarToString(course.getExamDate()));
 
-            courseListRename.add(stringBuild.toString()) ;
+            data.add(partial.toString()) ;
         }
-        IO.write("src/Data/courses.txt",courseListRename);
+        IO.write("src/Data/courses.txt",data);
     }
 }
 

@@ -11,7 +11,7 @@ import Managers.CalendarMgr;
 import Managers.DataListMgr;
 import Managers.IndexMgr;
 import Managers.PrintMgr;
-import Managers.StaffCourseMgr;
+import Managers.AdminMgr;
 import Entities.Course;
 import Entities.Index;
 import Entities.Lesson;
@@ -19,7 +19,7 @@ import Entities.StudentCourse;
 
 public class CourseUI {
 
-    private static Scanner sc = new Scanner(System.in);
+    private static final Scanner sc = new Scanner(System.in);
 
     /**
      * Show a UI that prompts Staff to add/update courses
@@ -126,7 +126,7 @@ public class CourseUI {
 
     private static void removeCourseUI() throws IOException, ParseException{
         System.out.print("Enter the course's code:"); String courseCode = sc.nextLine();
-        StaffCourseMgr.removeCourse(courseCode.toUpperCase());
+        AdminMgr.removeCourse(courseCode.toUpperCase());
     }
 
     private static void updateCourseUI() throws IOException, ParseException{
@@ -144,9 +144,9 @@ public class CourseUI {
             sc.nextLine();
 
             switch(in){
-                case 1		:	StaffCourseMgr.updateCourseCode(courseCode);
+                case 1		:	AdminMgr.updateCourseCode(courseCode);
                     break;
-                case 2 		:	StaffCourseMgr.updateSchool(courseCode);
+                case 2 		:	AdminMgr.updateSchool(courseCode);
                     break;
                 case 3		:	IndexMgr.updateIndex(courseCode);
                     break;

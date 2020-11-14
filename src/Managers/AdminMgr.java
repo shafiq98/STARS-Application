@@ -13,9 +13,10 @@ import Entities.Index;
 import Entities.Lesson;
 import Entities.StudentCourse;
 
-public class StaffCourseMgr {
+public class AdminMgr
+{
 
-    private static Scanner sc = new Scanner(System.in);
+    private static final Scanner sc = new Scanner(System.in);
     private static boolean update = false;
 
     public static void removeCourse(String courseCode) throws IOException, ParseException{
@@ -30,7 +31,7 @@ public class StaffCourseMgr {
                 CourseData.saveCourses(courseList);
                 System.out.println("Course " + c.getCourseName() + " (" + courseCode + ") has been removed!");
 
-                // remove indexes
+                // remove indexes from indexes.txt
                 int indexCounter = 0;
                 while(indexCounter != indexList.size()){
                     for(Index i : indexList) {
@@ -38,7 +39,7 @@ public class StaffCourseMgr {
                             indexList.remove(i);
                             IndexesData.saveIndexes(indexList);
 
-                            // remove lessons
+                            // remove lessons from lessons.txt
                             int lessonCounter = 0;
                             while(lessonCounter != lessonList.size()){
                                 for(Lesson l : lessonList){
@@ -59,7 +60,7 @@ public class StaffCourseMgr {
                     }
                 }
 
-                //remove studentCourses
+                //remove courses from studentCourses.txt
                 int studCourseCounter = 0;
                 while(studCourseCounter != studentCourseList.size()){
                     for(StudentCourse sc : studentCourseList){
@@ -84,9 +85,12 @@ public class StaffCourseMgr {
         ArrayList<Course> courseList = DataListMgr.getCourses();
         String newCourseCode = null;
 
-        if(courseList.size() <= 0){
+        if(courseList.size() <= 0)
+        {
             System.out.println("No match found!");
-        }else{
+        }
+        else
+        {
             for (Course c : courseList)
             {
                 if(c.getCourseCode().equals(courseCode)){
@@ -110,7 +114,7 @@ public class StaffCourseMgr {
                         }
                     }
 
-                    //updating studentCourses info data
+                    //updating Course Code in studentCourses.txt
                     ArrayList<StudentCourse> studentCourseList = DataListMgr.getStudentCourses();
                     for(StudentCourse sc : studentCourseList){
                         if(sc.getCourseCode().equals(courseCode)){
@@ -137,14 +141,17 @@ public class StaffCourseMgr {
         }
 
     }
-    public static void updateSchool(String courseCode) throws IOException, ParseException{
+    public static void updateSchool(String courseCode) throws IOException, ParseException
+    {
         ArrayList<Course> courseList = DataListMgr.getCourses();
-        boolean update = false;
+        boolean status = false;
 
-        if(courseList.size() <= 0){
+        if(courseList.size() <= 0)
+        {
             System.out.println("No match found!");
         }
-        else{
+        else
+        {
             for (Course c : courseList)
             {
                 if(c.getCourseCode().equals(courseCode)){
@@ -161,12 +168,14 @@ public class StaffCourseMgr {
                             c.getExamDate());
                     DataListMgr.writeObject(newCourse);
 
-                    update = true;
+                    status = true;
                     break;
                 }
             }
         }
-        if(!update){
+        // if update status hasn't changed, raise error message
+        if(!status)
+        {
             System.out.println("Sorry, the course code is not valid, no match found.\n");
         }
     }

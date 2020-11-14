@@ -9,7 +9,7 @@ import Entities.Lesson;
 import Entities.StudentCourse;
 
 public class IndexMgr {
-    private static Scanner sc = new Scanner(System.in);
+    private static final Scanner sc = new Scanner(System.in);
 
     public static void updateVacancy(String courseCode) throws IOException, ParseException{
         ArrayList<Index> indexList = DataListMgr.getIndexes();
