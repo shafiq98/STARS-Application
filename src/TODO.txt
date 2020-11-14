@@ -1,11 +1,7 @@
 TODO
 
 Problems :
-1. Need to insert a function to check conflicts in scheduling
-> Possible solution : Inside StudentCourseMgr, add 2 private methods.
-    First method retrieves the 3 days and 3 (start, end) time pair for any given index
-    Second method iterates through all currently registered courses (registered under student) and compares results between
-    new course and already registered course. Once a boolean flag Conflict is set to true, break out and raise an error.
+1.
 
 Features that need to be added :
 1. E-mail notification System

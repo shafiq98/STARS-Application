@@ -16,7 +16,6 @@ public class IndexesData {
     @SuppressWarnings({ "rawtypes", "unchecked"})
     public static ArrayList<Index> initIndexes() throws IOException, ParseException {
         // read String from text file
-        System.out.println("Reading from text file");
         ArrayList<String> stringArray = (ArrayList) IO.read("src/Data/indexes.txt");
 
         for (int i = 0 ; i < stringArray.size() ; i++) {
